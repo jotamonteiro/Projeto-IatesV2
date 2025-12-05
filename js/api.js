@@ -18,6 +18,7 @@ function obterMensagens() {
     return retorno;
 }
 
+
 function carregarMensagens() {
     let arraymsgLocal = JSON.parse(localStorage.getItem('arraymsg')) || [];
 
@@ -146,9 +147,17 @@ function atualizarMensagens() {
     alert('Mensagens atualizadas!');
 }
 
-window.onload = function () {
+
+window.addEventListener('DOMContentLoaded', function () {
     carregarMensagens();
-};
+
+    const buttomAtualizar = document.getElementById("buttonADM");
+    if (buttomAtualizar) {
+        const btn = buttomAtualizar.querySelector("button");
+        if (btn) btn.addEventListener("click", atualizarMensagens);
+    }
+});
+
 
 function enviarFormulario() {
     var mensagem = {
